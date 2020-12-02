@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Survey Data</title>
+    <link rel="stylesheet" href="styles/main.css" />
+
+<script type="text/javascript">
+//<![CDATA[
+var decode = function ( text ) {
+    text = text.replace(/\+/g, " ");
+    text = text.replace(/%[a-fA-F0-9]{2}/g, 
+        function ( text ) {
+            return String.fromCharCode( "0x" + text.substr(1,2));
+        }
+    );
+    return text;
+}
+    
+var display_data = function () {
+    var query = location.search.replace("?", "");
+    if ( query == "" ) return;
+    
+    var fields = query.split("&");
+    
+    if ( fields.length == 0 ) {
+        document.write("<p>This is a required item.</p>");
+    } else {
+        document.write("<dl>");
+        var field_parts;
+        for ( var i in fields ) {
+            field_parts = fields[i].split("=");
+            field_parts[0] = decode( field_parts[0] );
+            field_parts[1] = decode( field_parts[1] );
+            document.write("<dt>" + field_parts[0] + "</dt>");
+            document.write("<dd>" + field_parts[1] + "</dd>");
+        }
+        document.write("</dl>");
+    }
+}
+
+</script>
+</head>
+
+<body>
+    
+
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Scenery</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="js/jquery-3.1.1.min.jss"></script>
+    
+</head>
+
+<body>
+    <header>
+        <img src="styles/image/logo1.jpg">
+        <h1 class="header1"><i><big>W</big>elcome to HuangShiGang University</i></h1>
+    </header>
+
+  
+    
+     <main>
+         <div>
+           <nav id="nav_menu">
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="computerscience.html">Computer Science</a></li>
+        <li><a href="Campusscenery.html">Scenery</a></li>
+        <li><a href="Assistant.html">Assistant</a></li>
+        <li><a href="GPA.html">GPA Calculate</a>        
+        <li><a href="Contact.html">Contact Us</a></li>
+    </ul>
+        </nav>
+         </div>
+         <script>display_data();</script>
+         
+         
+         
+        </main>
+    
+    
+    <footer>
+            <p class="footer">&copy; 2020 HuangZhi</p>
+            <p class="footer">Phone Number: 001002003</p>
+    </footer>
+	
+    
+    
+</body>
+</html>
